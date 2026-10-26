@@ -90,21 +90,18 @@ print("Testing Set Size:", len(test_data))
 
 
 #11
+import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier, plot_tree
-import matplotlib.pyplot as plt
+
 data = load_iris()
-X = data.data
-y = data.target
-model = DecisionTreeClassifier(random_state=42)
+X, y = data.data, data.target
+
+model = DecisionTreeClassifier()
 model.fit(X, y)
-plt.figure(figsize=(12, 8))
-plot_tree(model, feature_names=data.feature_names,
-          class_names=data.target_names,
-          filled=True)
+
+plot_tree(model, filled=True)
 plt.show()
-
-
 
 
 
@@ -116,37 +113,34 @@ plt.show()
 
 #12
 import matplotlib.pyplot as plt
-from sklearn.datasets import make_blobs
+from sklearn.datasets import load_iris
 from sklearn.cluster import KMeans
-X, y = make_blobs(n_samples=100, centers=3, random_state=42)
-kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
-kmeans.fit(X)
-plt.scatter(X[:, 0], X[:, 1], c=kmeans.labels_)
-plt.scatter(kmeans.cluster_centers_[:, 0],
-            kmeans.cluster_centers_[:, 1],
-            marker='X', s=200)
-plt.title("K-Means Clustering")
-plt.xlabel("Feature 1")
-plt.ylabel("Feature 2")
+
+data = load_iris()
+X = data.data[:, :2]
+
+model = KMeans(n_clusters=3, random_state=0, n_init=10)
+y = model.fit_predict(X)
+
+plt.scatter(X[:, 0], X[:, 1], c=y)
 plt.show()
-print("Cluster Labels:")
-print(kmeans.labels_)
 
 
 #14
 import matplotlib.pyplot as plt
+from sklearn.datasets import load_diabetes
 from sklearn.linear_model import LinearRegression
-X = [[1], [2], [3], [4], [5]]
-y = [2, 4, 5, 4, 5]
+
+data = load_diabetes()
+X = data.data[:, [2]]
+y = data.target
+
 model = LinearRegression()
 model.fit(X, y)
-prediction = model.predict([[6]])
-print("Slope:", model.coef_[0])
-print("Intercept:", model.intercept_)
-print("Prediction for X = 6:", prediction[0])
-plt.scatter(X, y, color="blue")
-plt.plot(X, model.predict(X), color="red")
-plt.xlabel("X")
-plt.ylabel("Y")
-plt.title("Simple Linear Regression")
+
+plt.scatter(X, y)
+plt.plot(X, model.predict(X))
 plt.show()
+
+print(model.coef_)
+print(model.intercept_)
