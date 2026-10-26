@@ -1,3 +1,4 @@
+#3
 graph = {
     'a':['b','c'],
     'b':['d','e'],
@@ -19,7 +20,7 @@ dfs('a')
 
 
 
-
+#5
 import heapq
 graph = {
     'A': [('B', 1), ('C', 3)],
@@ -68,7 +69,7 @@ astar('A', 'G')
 
 
 
-
+#9
 import pandas as pd
 from sklearn.model_selection import train_test_split
 data = pd.read_csv("dataset.csv")
@@ -88,7 +89,7 @@ print("Testing Set Size:", len(test_data))
 
 
 
-
+#11
 from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 import matplotlib.pyplot as plt
@@ -113,7 +114,7 @@ plt.show()
 
 
 
-
+#12
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
@@ -132,7 +133,7 @@ print("Cluster Labels:")
 print(kmeans.labels_)
 
 
-
+#14
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 X = [[1], [2], [3], [4], [5]]
